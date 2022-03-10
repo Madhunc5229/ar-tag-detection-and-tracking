@@ -24,6 +24,12 @@
 
 ![image](https://user-images.githubusercontent.com/61328094/157696653-120990a7-0912-44ec-8eb9-a55de6cf0559.png)
 
+## Superimposing the testudo (University of Maryland's mascot, Go Terps!) on the AR Tag: 
+
+![image](https://user-images.githubusercontent.com/61328094/157698513-89b09394-67e6-4ee2-92a1-2a02866d4588.png)
+
+![image](https://user-images.githubusercontent.com/61328094/157698621-06b18c43-276c-4283-91c1-503243bd4655.png)
+
 ## Steps taken to detect the AR Tag:
 
 • Capture the video, get a random frame from the video.  
