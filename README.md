@@ -43,6 +43,8 @@
 • Stored the tag corners in a list and calculated Homography between the corner points and source points and destination points as four corner points of a new black image of shape called ‘Tag’ (80,80). 80 because it will be easy to divide while decoding the tag.  
 • Computed the homography matrix by comptuing the solution for Ax = 0, where A is  
 
+![image](https://user-images.githubusercontent.com/61328094/157697385-be88b53e-2482-4a05-97f1-97ce8863a720.png)
+
 • Perform svd(A) and get u, s and v. Last column of v is considered as the solution for Ax=0. Reshaping the solution will give the Homograpghy matrix.  
 • Image warping: For every point in the Tag, calculated the inverse of Homography matrix and multiplied with [x,y,1], where x and y are the indices of the Tag image, the output of the product contains [x’, y’, z’]. Therefore, normalized the values by dividing the elements by z’.  
 • The values in frame for [x’/z’, y’/z’] will be copied to Tag[x,y].  
