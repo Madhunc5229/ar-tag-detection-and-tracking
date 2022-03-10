@@ -54,4 +54,12 @@
 • Checked which outer square is white in order to get the orientation of the tag.  
 • Defined the direction of the cycle of bits for each outer corner. That is, suppose the outer white corner is on Top right then the order is 3 , 0 , 1, 2.  
 • After checking which outer corner is white, used the order assigned to that corner to check for inner squares, if the square is white, it is considered as 1 else 0.  
-• After checking for the inner squares, converted the binary number to decimal and returned it as the tag ID.  
+• After checking for the inner squares, converted the binary number to decimal and returned it as the tag ID. 
+
+## Steps taken to super impose an image on the AR Tag:
+
+• Carried out the same steps as previous question to get the AR tag corners, tag ID and the orientation of the tag.  
+• Imported the testudo image and resized it to 80 x 80.  
+• Computed homography between the corners of the testudo image and the tag corners and arranged these points according to the orientation of the tag. (i.e 3, 0, 1, 2).  
+• Image warping: For every point in testudo image, multiplied the inverse of homography matrix with [x,y,1], where x and y are the pixel coordinates of the testudo image.  
+• The product of above will contain [x’, y’, z’], to normalize dividing by z’. We get, [x’/z’,y’/z’]. Using these indices, assigned the value of testudo image to the frame.  
