@@ -24,7 +24,7 @@
 
 ![image](https://user-images.githubusercontent.com/61328094/157696653-120990a7-0912-44ec-8eb9-a55de6cf0559.png)
 
-## Steps taken to detect:
+## Steps taken to detect the AR Tag:
 
 • Capture the video, get a random frame from the video.  
 • Convert the frame to gray image.  
@@ -37,3 +37,19 @@
 • Passed the image after inverse Fourier Transform to GoodFeaturesToTrack(), which uses the Shi-Tomasi algorithm to detect corners.  
 • Stored the output from GoodFeaturesToTrack() in a list and passed it to function ‘removePaperC()’ which removes the outer four corners I.e the paper corners and returns the list of remaining corners.  
 • Next, this new list is to passed to ‘getCorners()’ function which gives the AR tag’s corners as output by calculating x minimum, y minimum , x maximum , y maximum and their corresponding corresponding cordinates.  
+
+## Steps taken to decode the AR Tag:
+
+• Stored the tag corners in a list and calculated Homography between the corner points and source points and destination points as four corner points of a new black image of shape called ‘Tag’ (80,80). 80 because it will be easy to divide while decoding the tag.  
+• Computed the homography matrix by comptuing the solution for Ax = 0, where A is  
+
+• Perform svd(A) and get u, s and v. Last column of v is considered as the solution for Ax=0. Reshaping the solution will give the Homograpghy matrix.  
+• Image warping: For every point in the Tag, calculated the inverse of Homography matrix and multiplied with [x,y,1], where x and y are the indices of the Tag image, the output of the product contains [x’, y’, z’]. Therefore, normalized the values by dividing the elements by z’.  
+• The values in frame for [x’/z’, y’/z’] will be copied to Tag[x,y].  
+• Performed morphology for the output Tag to remove noise.  
+• Passed the tag to getARtagID() to decode the tag.  
+• Divided the tag into 8 X 8 squares by slicing separately for outer corners and inner corners.  
+• Checked which outer square is white in order to get the orientation of the tag.  
+• Defined the direction of the cycle of bits for each outer corner. That is, suppose the outer white corner is on Top right then the order is 3 , 0 , 1, 2.  
+• After checking which outer corner is white, used the order assigned to that corner to check for inner squares, if the square is white, it is considered as 1 else 0.  
+• After checking for the inner squares, converted the binary number to decimal and returned it as the tag ID.  
