@@ -24,16 +24,16 @@
 
 ![image](https://user-images.githubusercontent.com/61328094/157696653-120990a7-0912-44ec-8eb9-a55de6cf0559.png)
 
-## Steps taken to detect and decode the AR Tag:
+## Steps taken to detect:
 
-• Capture the video, get a random frame from the video.
-• Convert the frame to gray image.
-• Apply threshold and convert the frame to binary image.
-• Performed morphology operation (erosion followed by dilation also known as opening) to get rid of all the noise and blobs.
-• Converted the frame into frequency domain using discrete Fourier transform function (cv2.dft()) and computed the magnitude spectrum of the dft frame.
-• Created a mask of same shape as frame with centre circular area as ‘0’ which acts as a high pass filter, so it allows only high frequency points tp pass.
-• Next, took inverse Fourier transform of the frame after multiplication with high pass filter.
-• This new frame generated after inverse Fourier transform has all the edges highlighted as white points and the background as black.
-• Passed the image after inverse Fourier Transform to GoodFeaturesToTrack(), which uses the Shi-Tomasi algorithm to detect corners.
-• Stored the output from GoodFeaturesToTrack() in a list and passed it to function ‘removePaperC()’ which removes the outer four corners I.e the paper corners and returns the list of remaining corners.
-• Next, this new list is to passed to ‘getCorners()’ function which gives the AR tag’s corners as output by calculating x minimum, y minimum , x maximum , y maximum and their corresponding corresponding cordinates.
+• Capture the video, get a random frame from the video.  
+• Convert the frame to gray image.  
+• Apply threshold and convert the frame to binary image.  
+• Performed morphology operation (erosion followed by dilation also known as opening) to get rid of all the noise and blobs.  
+• Converted the frame into frequency domain using discrete Fourier transform function (cv2.dft()) and computed the magnitude spectrum of the dft frame.  
+• Created a mask of same shape as frame with centre circular area as ‘0’ which acts as a high pass filter, so it allows only high frequency points tp pass.  
+• Next, took inverse Fourier transform of the frame after multiplication with high pass filter.  
+• This new frame generated after inverse Fourier transform has all the edges highlighted as white points and the background as black.  
+• Passed the image after inverse Fourier Transform to GoodFeaturesToTrack(), which uses the Shi-Tomasi algorithm to detect corners.  
+• Stored the output from GoodFeaturesToTrack() in a list and passed it to function ‘removePaperC()’ which removes the outer four corners I.e the paper corners and returns the list of remaining corners.  
+• Next, this new list is to passed to ‘getCorners()’ function which gives the AR tag’s corners as output by calculating x minimum, y minimum , x maximum , y maximum and their corresponding corresponding cordinates.  
