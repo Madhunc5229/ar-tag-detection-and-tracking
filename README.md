@@ -38,6 +38,8 @@
 
 ![image](https://user-images.githubusercontent.com/61328094/157698621-06b18c43-276c-4283-91c1-503243bd4655.png)
 
+### Video link: https://www.youtube.com/watch?v=aj1X3Jfwuts  
+
 ## Steps taken to detect the AR Tag:
 
 • Capture the video, get a random frame from the video.  
